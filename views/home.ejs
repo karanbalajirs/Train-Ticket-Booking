@@ -1,0 +1,118 @@
+<%- include("./partials/header") %>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: rgb(255, 255, 255);">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="https://img.freepik.com/premium-vector/fast-train-logo-template_500280-864.jpg?w=740" height="50" alt="" loading="lazy" />
+          </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link custom-a active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item custom-a">
+          <a class="nav-link" href="/mytickets">My Tickets</a>
+        </li>
+      </ul>
+      <!-- Left links -->
+
+      <!-- Search form -->
+      <ul class="navbar-nav ml-auto mx-md-2">
+        <!-- Navbar dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                <img src="https://img.freepik.com/premium-vector/businessman-icon-vector_52756-255.jpg?w=740"
+                class="rounded-circle img-fluid" height='35' width='35'>
+            </a>
+            <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+              <% if(isauth){ %>
+                    <a class="dropdown-item dropdown-item-custom" href="/logout">Log Out</a>
+              <% }else{%>
+                <a class="dropdown-item dropdown-item-custom" href="/login">Login</a>
+                <% }%>
+            <!-- <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul> -->
+            </div>
+          </li>
+          </div>
+        </li>
+      </ul>
+      <!-- <form class="d-flex input-group w-auto">
+        <input type="search" class="form-control" placeholder="Train Name" aria-label="Search" />
+        <button class="btn btn-outline-primary" type="submit" style="padding: .45rem 1.5rem .35rem;">
+          Search
+        </button>
+      </form> -->
+      
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+    <div class="container-fluid h-100 justify-content-center">
+      
+      <div class="row d-flex justify-content-center h-100">
+        <div class="col-lg-11 col-xl-11">
+          
+          <% travel.forEach((value) => { %>
+            <form method="post" action="/coach/<%=value.travelId%>"> 
+            <div class="card text-center mt-4 mx-md-4 " >
+              <div class="card-body  d-flex justify-content-between mx-md-4 align-items-center ">
+                <div><h5 class="card-text  top-20 start-0"><%= value.trainVal.trainstart %></h5></div>
+                <div><i class="fa-solid fa-arrow-right  fa-2xl align-self-center position-absolute top-25 start-50"></i>
+                  </div>
+                <div><h5 class="card-text"><%= value.trainVal.traindest %></h5></div>
+              </div>
+              <div class="card-footer d-flex justify-content-between ">
+                <div class="d-flex justify-content-around align-self-center card-text">
+                  <p style="color:blue;" class="ps">VIA:</p>
+                  <p class="ps"><%= value.trainVal.trainroute[0]%></p>
+                  <p class="ps"><%= value.trainVal.trainroute[1] %></p>
+                  <p class="ps"><%= value.trainVal.trainroute[2] %></p>
+                </div>
+                  <button type="submit" class="align-self-center position-absolute af card-text btn btn-outline-primary btn-sm" name="<%- value %>" >Book Now</button>
+                <div class="d-flex align-self-center card-text ">
+                  <% var r = String(value.travelDate);
+                  d = r.substring(3,15);
+                  t = r.substring(16,21);
+                  %>
+                  <p style="color: blueviolet; " class="ps">Date:</p>
+                  <p class="text-muted ps"><%= d %></p>
+                  <p style="color: blueviolet; " class="ps">Time:</p>
+                  <p class="text-muted ps"><%= t %> (IST)</p>
+                </div>
+              </div>
+            </div>
+         
+            <!-- <div class="card text-black mt-4" style="border-radius: 15px;">
+            <div class="card-body p-md-2" >
+                <div class="row justify-content-center">
+                    <div class="d-flex col-lg-6 col-xl-5 order-2 order-lg-1">
+                    <p class=" text-center h1  mb-4 mx-1 mx-md-4 ">Sign In</p>
+                    <p class=" text-center h1  mb-4 mx-1 mx-md-4 ">Sign In</p>
+                    </div>
+                  </div>
+                </div>
+            </div> -->
+          </form>
+            <% }); %>
+          
+          </div>
+        </div>
+        
+    </div>
+
+<%- include('./partials/footer') %>
+</body>
+</html>

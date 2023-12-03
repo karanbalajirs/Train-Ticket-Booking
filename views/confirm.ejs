@@ -1,0 +1,110 @@
+<%- include("./partials/header") %>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: rgb(255, 255, 255);">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="https://img.freepik.com/premium-vector/fast-train-logo-template_500280-864.jpg?w=740" height="50" alt="" loading="lazy" />
+          </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link custom-a " aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item custom-a">
+          <a class="nav-link" href="/mytickets">My Tickets</a>
+        </li>
+      </ul>
+      <!-- Left links -->
+
+      <!-- Search form -->
+      <ul class="navbar-nav ml-auto mx-md-2">
+        <!-- Navbar dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                <img src="https://img.freepik.com/premium-vector/businessman-icon-vector_52756-255.jpg?w=740"
+                class="rounded-circle img-fluid" height='35' width='35'>
+            </a>
+            <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+              <% if(isauth){ %>
+                    <a class="dropdown-item dropdown-item-custom" href="/logout">Log Out</a>
+              <% }else{%>
+                <a class="dropdown-item dropdown-item-custom" href="/login">Login</a>
+                <% }%>
+            <!-- <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul> -->
+            </div>
+          </li>
+          </div>
+        </li>
+      </ul>
+      <!-- <form class="d-flex input-group w-auto">
+        <input type="search" class="form-control" placeholder="Train Name" aria-label="Search" />
+        <button class="btn btn-outline-primary" type="submit" style="padding: .45rem 1.5rem .35rem;">
+          Search
+        </button>
+      </form> -->
+      
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<section class="vh-100">
+    <div class="container-fluid h-100 justify-content-center">
+        <div class="row  justify-content-center h-100">
+            <div class="col-lg-11 col-xl-11">
+              <h1 class="text-center mt-4" style="color: white;">Booking Confirmed
+              </h1>
+                <div class="card mt-4  d-flex row justify-content-around">
+                    <div class="card-header d-flex justify-content-between">
+                      <b><%= ticket.travelId.trainVal.trainName %></b>
+                      <%= ticket.travelId.trainVal.trainNumber %>
+                      <b style="color: darkblue;"><%= String(ticket.travelId.travelDate).substring(3,15) %></b>
+                      <b style="color: purple;"><%= String(ticket.travelId.travelDate).substring(16,25) %></b>
+                    </div>
+                    <div class="card-body ">
+                      <div class="d-flex justify-content-between">
+                      <div><h5 class="card-text  top-20 start-0"><%= ticket.travelId.trainVal.trainstart %></h5></div>
+                    <div><i class="fa-solid fa-arrow-right  fa-2xl align-self-center position-absolute top-5 start-50"></i>
+                      </div>
+                    <div><h5 class="card-text"><%= ticket.travelId.trainVal.traindest %></h5></div>
+                    </div>
+                    <div class=" card-text mx-md-2 mt-4" >
+                      <center><table class="table table-striped">
+                        <thead>
+                        <tr>
+                          <th>Name of the Passenger</th>
+                          <th>Age of the Passenger</th>
+                          <th>Seat Number</th>
+                          <th>Coach Name</th>
+                        </tr></thead>
+                        <% let j=0%>
+                          <% ticket.travelDetails.forEach(element => { %>
+                            <tr>
+                              <td><%= element.name %></td>
+                              <td><%= element.age %></td>
+                              <td><%= seat[j].seat.seatNumber%></td>
+                              <td><%= seat[j].coach.coachName %></td>
+                            </tr>
+                            <% j++; %>
+                          <% }) %>
+                      </table></center>
+                    </div>
+                    </div>
+                </div>       
+            </div>
+          </div>
+      </div>
+  </section>
+  </body>
+  </html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="register.css"> -->
+    <script src="https://kit.fontawesome.com/42eeb571b3.js" crossorigin="anonymous"></script>
+    <style>
+        .dropdown-item-custom{
+          left: -50%;
+        }
+        .custom-a{
+            font-size: large;
+        }
+        .active{
+          font-weight: bold;
+        }
+        .af{
+          left:47%;
+        }
+        body{
+          background-image: url(https://images.unsplash.com/photo-1530625625693-b38b404cb1be?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+          background-repeat: no-repeat;
+          background-attachment:fixed;
+        }.ps{
+          margin:0%;
+          margin-right: 4px;
+          padding: 0%;
+        }
+        .seat-container {
+            display: grid;
+            grid-template-columns: repeat(18, 1fr); /* Adjust the number of columns as needed */
+            gap: 10px;
+        }
+
+        .seat-checkbox {
+            display: none;
+        }
+
+        .seat-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ccc;
+            margin: 5px;
+            border-top-right-radius: 30%;
+            border-top-left-radius: 30%;
+            cursor: pointer;
+        }
+
+        .seat-checkbox:checked+.seat-label {
+            background-color: #5cb85c; /* Highlight selected seats */
+            color: #fff;
+        }
+        .sa{
+          left:47.5%;
+        }
+      </style>
+    <title>Document</title>
+    
+</head>
+<body>
